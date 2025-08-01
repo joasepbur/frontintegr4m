@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import ConfirmModal from '../../components/Admin/ConfirmModal';
+import Card from '../../components/Admin/Card';
+import Button from '../../components/Admin/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import AdminPanel from './AdminPanel';
-import './TeamMembersView.css';
 import { showErrorToast, showSuccessToast } from '../../utils/toastHelper';
 import SkeletonLoader from '../../components/Admin/SkeletonLoader';
-import { FiPlus, FiSearch, FiStar, FiMoreVertical, FiEdit2, FiTrash2, FiUsers } from 'react-icons/fi';
+import { 
+  FiPlus, FiSearch, FiStar, FiMoreVertical, FiEdit2, FiTrash2, 
+  FiUsers, FiMail, FiPhone, FiMapPin, FiCalendar 
+} from 'react-icons/fi';
 
 const TeamMembersView = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showDropdown, setShowDropdown] = useState(null); // Para controlar qué dropdown está abierto
+  const [showDropdown, setShowDropdown] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState(null);
   const navigate = useNavigate();
@@ -48,179 +51,291 @@ const TeamMembersView = () => {
     if (!memberToDelete) return;
 
     try {
-      // Asumiendo que la URL correcta es /api/team/:id
       await axios.delete(`http://localhost:3001/api/team/${memberToDelete.id}`);
-      // Actualizar el estado para reflejar la eliminación
-      setTeamMembers(prevMembers => prevMembers.filter(member => member.id !== memberToDelete.id));
-      showSuccessToast('El miembro del equipo ha sido eliminado.', 'Eliminación Exitosa');
+      setTeamMembers(prev => prev.filter(member => member.id !== memberToDelete.id));
+      showSuccessToast('Miembro del equipo eliminado correctamente.');
       handleCloseModal();
     } catch (err) {
-      showErrorToast('No se pudo eliminar el miembro del equipo.', 'Error de Conexión');
+      showErrorToast('Error al eliminar el miembro del equipo.');
       console.error('Error deleting team member:', err);
-      handleCloseModal();
     }
   };
 
-  const toggleDropdown = (id) => {
-    setShowDropdown(showDropdown === id ? null : id);
-  };
-
   const filteredMembers = teamMembers.filter(member =>
-    member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    member.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    member.role.toLowerCase().includes(searchTerm.toLowerCase())
+    `${member.first_name} ${member.last_name} ${member.role}`
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
   );
 
-  const getRoleName = (role) => {
+  const getRoleLabel = (role) => {
     const roles = {
-      'psicologo': 'Psicólogo',
-      'psicopedagogo': 'Psicopedagogo',
-      'terapeuta': 'Terapeuta Ocupacional',
-      'administrador': 'Administrador'
+      'psychologist': 'Psicólogo/a',
+      'psychiatrist': 'Psiquiatra',
+      'therapist': 'Terapeuta',
+      'counselor': 'Consejero/a',
+      'admin': 'Administrador/a'
     };
     return roles[role] || role;
   };
 
+  const getRoleColor = (role) => {
+    const colors = {
+      'psychologist': 'bg-primary-100 text-primary-800',
+      'psychiatrist': 'bg-secondary-100 text-secondary-800',
+      'therapist': 'bg-success-100 text-success-800',
+      'counselor': 'bg-warning-100 text-warning-800',
+      'admin': 'bg-neutral-100 text-neutral-800'
+    };
+    return colors[role] || 'bg-neutral-100 text-neutral-800';
+  };
+
+  const getInitials = (firstName, lastName) => {
+    return `${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}`.toUpperCase();
+  };
+
   if (loading) {
     return (
-      <AdminPanel>
-        <div className="view-container">
-          <div className="view-header">
-            <h1 className="admin-title">Miembros del Equipo</h1>
-            <div className="view-actions">
-              <button className="btn btn-primary" disabled>+ Agregar Miembro</button>
-            </div>
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-neutral-800">Miembros del Equipo</h1>
+            <p className="text-neutral-600 mt-1">Gestiona los profesionales de tu centro</p>
           </div>
-          <SkeletonLoader />
+          <Button disabled leftIcon={<FiPlus />}>
+            Agregar Miembro
+          </Button>
         </div>
-      </AdminPanel>
+        <SkeletonLoader />
+      </div>
     );
   }
 
   return (
     <>
-      <AdminPanel>
-        <div className="view-container">
-          <div className="view-header">
-            <h1 className="admin-title">Miembros del Equipo</h1>
-            <div className="view-actions">
-              <button 
-                className="btn btn-primary" 
-                onClick={() => navigate('/team/members/new')}
-              >
-                <FiPlus /> Agregar Miembro
-              </button>
+      <div className="space-y-6">
+        {/* Header Section */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-neutral-800">Miembros del Equipo</h1>
+            <p className="text-neutral-600 mt-1">Gestiona los profesionales de tu centro</p>
+          </div>
+          <Button 
+            onClick={() => navigate('/team/members/new')}
+            leftIcon={<FiPlus />}
+          >
+            Agregar Miembro
+          </Button>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="bg-white rounded-xl shadow-card border border-neutral-200 p-6">
+            <div className="flex items-center">
+              <div className="p-3 rounded-xl bg-primary-100">
+                <FiUsers className="text-primary-600 text-xl" />
+              </div>
+              <div className="ml-4">
+                <p className="text-2xl font-bold text-neutral-800">{teamMembers.length}</p>
+                <p className="text-neutral-600 font-medium">Total Miembros</p>
+              </div>
             </div>
           </div>
+          
+          <div className="bg-white rounded-xl shadow-card border border-neutral-200 p-6">
+            <div className="flex items-center">
+              <div className="p-3 rounded-xl bg-success-100">
+                <FiStar className="text-success-600 text-xl" />
+              </div>
+              <div className="ml-4">
+                <p className="text-2xl font-bold text-neutral-800">
+                  {teamMembers.filter(m => m.role === 'psychologist').length}
+                </p>
+                <p className="text-neutral-600 font-medium">Psicólogos</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-card border border-neutral-200 p-6">
+            <div className="flex items-center">
+              <div className="p-3 rounded-xl bg-secondary-100">
+                <FiCalendar className="text-secondary-600 text-xl" />
+              </div>
+              <div className="ml-4">
+                <p className="text-2xl font-bold text-neutral-800">
+                  {teamMembers.filter(m => m.role === 'therapist').length}
+                </p>
+                <p className="text-neutral-600 font-medium">Terapeutas</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-card border border-neutral-200 p-6">
+            <div className="flex items-center">
+              <div className="p-3 rounded-xl bg-warning-100">
+                <FiMapPin className="text-warning-600 text-xl" />
+              </div>
+              <div className="ml-4">
+                <p className="text-2xl font-bold text-neutral-800">
+                  {teamMembers.filter(m => m.status === 'active').length}
+                </p>
+                <p className="text-neutral-600 font-medium">Activos</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <div className="view-toolbar">
-            <div className="search-bar">
-              <FiSearch className="search-icon" />
+        {/* Search and Filters */}
+        <Card padding="default">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+            <div className="relative flex-1 max-w-md">
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400" />
               <input
                 type="text"
                 placeholder="Buscar por nombre, apellido o rol..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 pr-4 py-2.5 w-full border border-neutral-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               />
             </div>
+            <div className="flex items-center space-x-3">
+              <span className="text-sm text-neutral-600">
+                {filteredMembers.length} de {teamMembers.length} miembros
+              </span>
+            </div>
           </div>
+        </Card>
 
-          <div className="table-container">
-            <table className="data-table">
-              <thead>
-                <tr>
-                  <th>Miembro</th>
-                  <th>Rol</th>
-                  <th>Contacto</th>
-                  <th>Experiencia</th>
-                  <th>Calificación</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredMembers.length > 0 ? (
-                  filteredMembers.map((member) => (
-                    <tr key={member.id}>
-                      <td>
-                        <div className="member-cell">
-                          <img 
-                            src={member.avatar || '/default-avatar.png'} 
-                            alt={member.name} 
-                            className="avatar" 
-                          />
-                          <div className="member-details">
-                            <span className="member-name">{member.name} {member.lastName}</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="member-role">{getRoleName(member.role)}</div>
-                      </td>
-                      <td className="cell contact">
-                        <span>{member.email}</span>
-                        {member.phone && <span className="phone">{member.phone}</span>}
-                      </td>
-                      <td>
-                        {member.experience ? `${member.experience} años` : 'N/A'}
-                      </td>
-                      <td>
-                        <div className="cell rating">
-                          <FiStar className="star-icon" />
-                          <span>0.0</span>
-                          <span className="review-count">(0 reseñas)</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="actions-dropdown">
-                          <button 
-                            className="actions-btn" 
-                            onClick={() => toggleDropdown(member.id)}
-                          >
-                            <FiMoreVertical />
-                          </button>
-                          {showDropdown === member.id && (
-                            <div className="dropdown-menu">
-                              <button className="dropdown-item" onClick={() => navigate(`/team/members/edit/${member.id}`)}>
-                                <FiEdit2 /> Editar
-                              </button>
-                              <button 
-                                onClick={() => handleDeleteClick(member)} 
-                                className="dropdown-item dropdown-item-delete"
-                              >
-                                <FiTrash2 /> Eliminar
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="6" className="empty-state">
-                      <FiUsers className="empty-state-icon" />
-                      <h3>No se encontraron miembros</h3>
-                      <p>Parece que aún no has agregado ningún miembro al equipo.</p>
-                      <button className="btn btn-primary" onClick={() => navigate('/team/members/new')}>
-                        Agregar Miembro
-                      </button>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+        {/* Team Members Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredMembers.map((member) => (
+            <div key={member.id} className="bg-white rounded-xl shadow-card border border-neutral-200 hover:shadow-md transition-all duration-200">
+              <div className="p-6">
+                {/* Member Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                      {getInitials(member.first_name, member.last_name)}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-neutral-800">
+                        {member.first_name} {member.last_name}
+                      </h3>
+                      <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${getRoleColor(member.role)}`}>
+                        {getRoleLabel(member.role)}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="relative">
+                    <Button
+                      variant="ghost"
+                      size="small"
+                      onClick={() => setShowDropdown(showDropdown === member.id ? null : member.id)}
+                    >
+                      <FiMoreVertical />
+                    </Button>
+                    
+                    {showDropdown === member.id && (
+                      <div className="absolute right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-neutral-200 z-10">
+                        <Link
+                          to={`/team/members/edit/${member.id}`}
+                          className="flex items-center px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-t-lg"
+                          onClick={() => setShowDropdown(null)}
+                        >
+                          <FiEdit2 className="mr-2" />
+                          Editar
+                        </Link>
+                        <button
+                          onClick={() => {
+                            handleDeleteClick(member);
+                            setShowDropdown(null);
+                          }}
+                          className="w-full flex items-center px-4 py-2 text-sm text-error-600 hover:bg-error-50 rounded-b-lg"
+                        >
+                          <FiTrash2 className="mr-2" />
+                          Eliminar
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Member Details */}
+                <div className="space-y-2">
+                  {member.email && (
+                    <div className="flex items-center text-sm text-neutral-600">
+                      <FiMail className="mr-2 flex-shrink-0" />
+                      <span className="truncate">{member.email}</span>
+                    </div>
+                  )}
+                  {member.phone && (
+                    <div className="flex items-center text-sm text-neutral-600">
+                      <FiPhone className="mr-2 flex-shrink-0" />
+                      <span>{member.phone}</span>
+                    </div>
+                  )}
+                  {member.specialization && (
+                    <div className="flex items-center text-sm text-neutral-600">
+                      <FiStar className="mr-2 flex-shrink-0" />
+                      <span className="truncate">{member.specialization}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Member Actions */}
+                <div className="mt-4 pt-4 border-t border-neutral-100">
+                  <div className="flex items-center justify-between">
+                    <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
+                      member.status === 'active' 
+                        ? 'bg-success-100 text-success-800' 
+                        : 'bg-neutral-100 text-neutral-800'
+                    }`}>
+                      {member.status === 'active' ? 'Activo' : 'Inactivo'}
+                    </span>
+                    <Link to={`/team/members/edit/${member.id}`}>
+                      <Button variant="outline" size="small">
+                        Ver perfil
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </AdminPanel>
 
-      <ConfirmModal 
+        {filteredMembers.length === 0 && (
+          <Card>
+            <div className="text-center py-12">
+              <FiUsers className="mx-auto h-12 w-12 text-neutral-400 mb-4" />
+              <h3 className="text-lg font-medium text-neutral-800 mb-2">
+                No se encontraron miembros
+              </h3>
+              <p className="text-neutral-600 mb-4">
+                {searchTerm 
+                  ? 'No hay miembros que coincidan con tu búsqueda.'
+                  : 'Aún no hay miembros en el equipo. Agrega el primer miembro.'
+                }
+              </p>
+              {!searchTerm && (
+                <Button onClick={() => navigate('/team/members/new')} leftIcon={<FiPlus />}>
+                  Agregar Primer Miembro
+                </Button>
+              )}
+            </div>
+          </Card>
+        )}
+      </div>
+
+      {/* Confirmation Modal */}
+      <ConfirmModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         onConfirm={handleConfirmDelete}
-        title="Confirmar Eliminación"
-        message={`¿Estás seguro de que deseas eliminar a ${memberToDelete?.name}? Esta acción no se puede deshacer.`}
-        confirmText="Sí, eliminar"
-        cancelText="No, cancelar"
+        title="Eliminar Miembro del Equipo"
+        message={`¿Estás seguro de que deseas eliminar a ${memberToDelete?.first_name} ${memberToDelete?.last_name}? Esta acción no se puede deshacer.`}
+        confirmText="Eliminar"
+        cancelText="Cancelar"
       />
     </>
   );
