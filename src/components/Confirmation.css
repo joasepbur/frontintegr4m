@@ -1,0 +1,37 @@
+.confirmation-container {
+  width: 100%;
+}
+
+.confirmation-details {
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item strong {
+  font-weight: 500;
+}
+
+.detail-item.total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-top: 1.5rem;
+}
+
+.confirmation-note {
+    text-align: center;
+    color: #6c757d;
+    margin-top: 2rem;
+}

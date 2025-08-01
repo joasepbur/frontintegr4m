@@ -1,0 +1,116 @@
+/* src/ConfirmBooking.css */
+
+.confirm-booking-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to the top */
+  min-height: 80vh;
+  padding: 60px 20px;
+  background-color: #f8f9fa; /* A light, neutral background */
+}
+
+.confirmation-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 550px;
+  text-align: left;
+}
+
+.confirmation-card h1 {
+  font-size: 2.2rem; /* Larger title */
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #2c3e50; /* Dark blue-gray */
+  text-align: center;
+}
+
+.booking-details .detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ecf0f1; /* Lighter border */
+}
+
+.booking-details .detail-item:last-child {
+  border-bottom: none;
+}
+
+.booking-details .detail-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #34495e; /* Slightly lighter than the value */
+}
+
+.booking-details .detail-value {
+  font-size: 1rem;
+  color: #555;
+  text-align: right;
+}
+
+.confirm-button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3a7bd5, #3a60d5);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(58, 123, 213, 0.3);
+}
+
+.confirm-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 123, 213, 0.4);
+}
+
+.login-prompt {
+  margin-top: 30px;
+  padding: 25px;
+  background-color: #eaf2f8;
+  border: 1px solid #d4e6f1;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.login-prompt p {
+  margin-bottom: 20px;
+  color: #1a5276;
+  font-size: 1.1rem;
+}
+
+.login-prompt .btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.login-prompt .btn {
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-prompt .btn-primary {
+  background-color: #3a7bd5;
+  color: white;
+}
+
+.login-prompt .btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.login-prompt .btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

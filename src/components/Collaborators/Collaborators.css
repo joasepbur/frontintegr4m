@@ -1,0 +1,106 @@
+/* Collaborators Section General Styles */
+.collaborators {
+  padding: 5rem 0;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin: 0.75rem auto 3rem;
+  border-radius: 2px;
+}
+
+/* Grid for the cards */
+.collaborators-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+/* Individual Collaborator Card */
+.collaborator-card {
+  flex: 0 0 260px;
+  background: var(--section-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  padding: 70px 1.5rem 2rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.collaborator-card:hover {
+  border-color: var(--secondary-color);
+  box-shadow: 0 4px 20px rgba(132, 197, 208, 0.2);
+}
+
+/* The image container */
+.collaborator-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--section-bg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.collaborator-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text content inside the card */
+.collaborator-info {
+  margin-top: 1rem;
+}
+
+.collaborator-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.collaborator-role {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Role-specific colors */
+.role-psych {
+  background-color: rgba(74, 111, 165, 0.1);
+  color: var(--primary-color);
+}
+
+.role-therapist {
+  background-color: rgba(132, 197, 208, 0.15);
+  color: var(--secondary-color);
+}
+

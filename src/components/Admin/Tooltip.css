@@ -1,0 +1,44 @@
+/* Tooltip.css */
+
+.tooltip-container {
+  position: relative;
+  display: inline-flex; /* Usamos inline-flex para alinear el icono y el texto */
+  align-items: center;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 220px;
+  background-color: #2d4356; /* Usamos un color oscuro para el fondo del tooltip */
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%; /* Posiciona el tooltip encima del elemento */
+  left: 50%;
+  margin-left: -110px; /* Centra el tooltip */
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Flecha del tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #2d4356 transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,0 +1,556 @@
+@import url('./AdminPanel.css');
+
+/* --- Nuevos Estilos para el Menú de Servicios --- */
+
+/* Main container */
+.service-menu-container {
+    display: flex;
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+/* Sidebar */
+.service-menu-sidebar {
+    width: 280px;
+    background-color: var(--surface-color);
+    padding: var(--spacing-md);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-menu-sidebar h4 {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: 0 0 var(--spacing-md) var(--spacing-xs);
+}
+
+.service-menu-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-menu-sidebar li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: background-color 0.2s, color 0.2s;
+    margin-bottom: 0.25rem;
+    border-left: 3px solid transparent;
+}
+
+.service-menu-sidebar li:hover {
+    background-color: var(--hover-color);
+}
+
+.service-menu-sidebar li.active {
+    background-color: var(--hover-color);
+    border-left: 3px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Main content */
+.service-menu-main {
+    flex: 1;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    background-color: var(--surface-color);
+}
+
+.service-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.service-menu-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Category styles */
+.category-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow-light);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.category-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.category-description {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Service list */
+.service-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--surface-color);
+    transition: all 0.2s ease;
+}
+
+.service-item:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(74, 111, 165, 0.1);
+}
+
+.service-info {
+    flex: 1;
+}
+
+.service-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.service-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    font-size: 0.9rem;
+}
+
+.service-duration {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.service-price {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Actions */
+.service-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.service-actions button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.service-actions button:hover {
+    background-color: var(--hover-color);
+    border-color: var(--text-tertiary);
+}
+
+.service-actions .edit-btn {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.service-actions .edit-btn:hover {
+    background-color: rgba(74, 111, 165, 0.1);
+}
+
+.service-actions .delete-btn {
+    color: var(--error-color);
+    border-color: var(--error-color);
+}
+
+.service-actions .delete-btn:hover {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+/* Add service button */
+.add-service-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-service-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.add-service-btn:disabled {
+    background-color: var(--text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.empty-state p {
+    margin: 1rem 0 0 0;
+    font-size: 1.125rem;
+}
+
+/* Variants section */
+.variants-section {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.variants-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.variants-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.variants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.variant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.variant-info {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.variant-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.variant-price {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.modal-body {
+    padding: var(--spacing-md);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-footer button {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.cancel-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.save-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+.save-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.save-btn:disabled {
+    background-color: var(--text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+}
+
+/* Dropdown styles */
+.actions-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.actions-dropdown-btn {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+.actions-dropdown-content {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 5px);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-medium);
+    min-width: 150px;
+    z-index: 100;
+    display: none;
+}
+
+.actions-dropdown-content.show {
+    display: block;
+}
+
+.actions-dropdown-item {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 5px);
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-medium);
+    min-width: 150px;
+    z-index: 100;
+    display: none;
+}
+
+.actions-dropdown-item.show {
+    display: block;
+}
+
+.actions-dropdown-item button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.actions-dropdown-item button:hover {
+    background-color: var(--hover-color);
+}
+
+.delete-item {
+    color: var(--error-color) !important;
+}
+
+.delete-item:hover {
+    background-color: rgba(244, 67, 54, 0.1) !important;
+}
+
+.service-item-price {
+    font-weight: 500;
+    min-width: 120px;
+    text-align: right;
+}
+
+.service-item-actions {
+    position: relative;
+}
+
+.service-item-actions .btn-icon {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.service-item-actions .btn-icon:hover {
+    background-color: #f7fafc;
+}
+
+.actions-dropdown-item {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.5rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 150px;
+    /* Ancho del dropdown */
+}
+
+.actions-dropdown-item button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.actions-dropdown-item button:hover {
+    background-color: #f7fafc;
+}
+
+.actions-dropdown-item button.danger {
+    color: #e53e3e;
+}

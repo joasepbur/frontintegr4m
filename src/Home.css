@@ -1,0 +1,34 @@
+:root {
+  /* Soft Psychological Palette - Matching Booking Pages */
+  --primary-color: #4a6fa5;
+  --secondary-color: #84c5d0;
+  --accent-color: #6ba3b7;
+  --text-color: #2d4356;
+  --secondary-text: #6b7c93;
+  --light-text-white: #ffffff;
+  --background-color: #fafbfc;
+  --section-bg: #ffffff;
+  --surface-color: #ffffff;
+  --border-color: #e1e8ed;
+  --hover-bg: #f8fafe;
+  --card-shadow: 0 2px 8px rgba(74, 111, 165, 0.08);
+  --border-radius: 8px;
+  
+  /* Additional Colors for Better Contrast */
+  --success-color: #22c55e;
+  --danger-color: #ef4444;
+  
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.home-wrapper::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: var(--background-color);
+}

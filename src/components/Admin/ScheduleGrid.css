@@ -1,0 +1,130 @@
+.schedule-grid-container {
+  background-color: #ffffff;
+  border: 1px solid #e0e5ed;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.grid-header, .grid-row {
+  display: grid;
+  grid-template-columns: 280px repeat(7, 1fr);
+  align-items: stretch; /* Stretch cells to full height */
+}
+
+.grid-header {
+  background-color: #f8fafc;
+  border-bottom: 2px solid #e0e5ed;
+  color: #4a5568;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.header-cell, .day-cell {
+  padding: 1rem;
+  text-align: center;
+}
+
+.header-cell:first-child {
+  text-align: left;
+  padding-left: 1.5rem;
+}
+
+.day-header .day-name {
+  display: block;
+  font-size: 0.75rem;
+}
+
+.day-header .day-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #002856;
+}
+
+.grid-row {
+  border-bottom: 1px solid #e0e5ed;
+}
+
+.grid-row:last-child {
+  border-bottom: none;
+}
+
+.member-info {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.member-info img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.member-name {
+  font-size: 1rem;
+}
+
+.member-role {
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.day-cell {
+  border-left: 1px solid #e0e5ed;
+  position: relative;
+  min-height: 80px; /* Ensure a minimum height */
+  transition: background-color 0.2s;
+}
+
+.day-cell:hover {
+  background-color: #f7faff;
+}
+
+.add-shift-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #e0e5ed;
+  color: #4a5568;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-cell:hover .add-shift-btn {
+  opacity: 1;
+}
+
+.add-shift-btn:hover {
+  background-color: #003466;
+  color: white;
+}
+
+.shift-block {
+  background-color: #e6f0ff;
+  color: #003466;
+  border-left: 4px solid #0052cc;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}

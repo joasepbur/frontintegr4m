@@ -1,0 +1,335 @@
+/* Contenedor principal de la página de edición */
+.service-editor-container {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.service-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.service-editor-header h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.editor-header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-cancel {
+  background-color: #fff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-save {
+  background-color: #1e293b;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.service-editor-content {
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Sidebar width and main content */
+  gap: 3rem;
+}
+
+/* Sidebar de navegación */
+.editor-sidebar {
+  width: 240px;
+  padding: 2rem;
+  border-right: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.editor-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.editor-sidebar nav li {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.editor-sidebar li.active {
+  background-color: #ede9fe; /* Light purple background */
+  color: #5b21b6; /* Darker purple text */
+  font-weight: 600;
+}
+
+.editor-sidebar .sidebar-heading {
+  font-size: 1.25rem; /* Larger font size for 'Ajustes' */
+  font-weight: 700;
+  color: #1a202c;
+  padding: 1.5rem 1.5rem 0.5rem; /* Padding top, sides, bottom */
+  margin: 0;
+}
+
+.editor-sidebar .badge {
+  background-color: #e2e8f0;
+  color: #4a5568;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px; /* Pill shape */
+}
+
+/* Área de contenido principal */
+.editor-main {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  overflow-y: auto; /* Permite el scroll solo en esta área */
+}
+
+.form-section-container + .form-section-container {
+  margin-top: 3rem; /* Espacio entre secciones */
+}
+
+/* --- Estilos importados de ServiceModal.css --- */
+
+/* Form Styles */
+.form-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #4a5568;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-row-triple {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.pricing-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-add-extra, .btn-options {
+    background-color: #fff;
+    border: 1px solid #cbd5e0;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-options {
+    background-color: #f7fafc;
+}
+
+.variant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.variant-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #5b21b6;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.input-with-adornment {
+    position: relative;
+}
+
+.input-with-adornment span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #718096;
+    font-size: 1rem;
+}
+
+.input-with-adornment span:first-of-type { /* For 'CLP' */
+    left: 1rem;
+    padding-right: 0.5rem;
+    border-right: 1px solid #cbd5e0;
+}
+
+.input-with-adornment span:last-of-type { /* For 'min.' */
+    right: 1rem;
+}
+
+.input-with-adornment input#precio {
+    padding-left: 4.5rem; /* Space for 'CLP' */
+}
+
+.input-with-adornment input#duracion {
+    padding-right: 4rem; /* Space for 'min.' */
+}
+
+/* Variants Section */
+.variants-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.variant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #fff;
+    border-left: 3px solid #ec4899; /* Accent color */
+}
+
+.variant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.variant-name {
+    font-weight: 500;
+}
+
+.variant-duration {
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.variant-price-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.variant-price {
+    font-weight: 500;
+}
+
+.btn-add-variant {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px dashed #cbd5e0;
+    color: #4a5568;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    justify-content: center;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.btn-add-variant:hover {
+    background-color: #f7fafc;
+}
+
+.actions-menu-container {
+    position: relative;
+}
+
+.btn-actions {
+    background-color: #fff;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.actions-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 5px);
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 10;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+}
+
+.actions-dropdown button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.actions-dropdown button:hover {
+    background-color: #f7fafc;
+}

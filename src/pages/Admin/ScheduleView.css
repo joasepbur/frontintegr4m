@@ -1,0 +1,101 @@
+.schedule-view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.schedule-view-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #002856;
+  margin: 0;
+}
+
+.schedule-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.schedule-actions button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.schedule-actions button:not(.primary) {
+  background-color: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.schedule-actions button:not(.primary):hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.schedule-actions button.primary {
+  background-color: #003466;
+  color: #ffffff;
+}
+
+.schedule-actions button.primary:hover {
+  background-color: #002347;
+}
+
+.member-select {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.schedule-actions button:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #d1d5db;
+}
+
+.week-navigator {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content */
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e5ed;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.week-nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #4a5568;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.week-nav-btn:hover {
+  background-color: #f0f5ff;
+  color: #003466;
+}
+
+.week-display {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #002856;
+  margin: 0 2rem; /* Add space around the date */
+  text-transform: capitalize;
+}

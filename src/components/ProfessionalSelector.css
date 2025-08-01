@@ -1,0 +1,72 @@
+.professional-selector-container {
+  width: 100%;
+}
+
+.professional-selector-container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.professional-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.professional-card {
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.professional-card:hover {
+  border-color: #adb5bd;
+}
+
+.professional-card.selected {
+  border-color: #8A2BE2;
+  box-shadow: 0 0 0 1px #8A2BE2;
+}
+
+.professional-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.professional-avatar-icon {
+    font-size: 2.5rem;
+    color: #495057;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+}
+
+.professional-card h4 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.professional-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}

@@ -1,0 +1,342 @@
+/* Soft Professional Psychological SelectCollaborator Page */
+
+.select-collaborator-page-container {
+  background-color: #fafbfc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Soft Professional Header */
+.select-collaborator-page-container .services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e1e8ed;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.select-collaborator-page-container .back-button,
+.select-collaborator-page-container .close-button {
+  background-color: #f8fafe;
+  border: 1px solid #d1dae0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #4a6fa5;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.select-collaborator-page-container .back-button:hover,
+.select-collaborator-page-container .close-button:hover {
+  background-color: #eef4f8;
+  color: #2d4356;
+  border-color: #84c5d0;
+}
+
+.select-collaborator-page-container .breadcrumbs {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.select-collaborator-page-container .breadcrumbs .separator {
+  margin: 0 0.5rem;
+  color: #8da2b5;
+}
+
+.select-collaborator-page-container .breadcrumbs .active {
+  color: #2d4356;
+  font-weight: 500;
+}
+
+.select-collaborator-page-container .breadcrumbs .inactive {
+  color: #8da2b5;
+}
+
+/* Content layout */
+.select-collaborator-page-container .services-content {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .select-collaborator-page-container .services-content {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+  }
+  
+  .select-collaborator-page-container .services-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .select-collaborator-page-container .breadcrumbs {
+    font-size: 0.8rem;
+  }
+}
+
+.select-collaborator-page-container .services-main-content {
+  flex: 2;
+}
+
+.select-collaborator-page-container .main-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2d4356;
+  letter-spacing: -0.02em;
+}
+
+/* Collaborator list styles */
+.collaborator-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .collaborator-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.collaborator-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.collaborator-item:hover {
+  border-color: #84c5d0;
+  box-shadow: 0 2px 8px rgba(74, 111, 165, 0.08);
+}
+
+.collaborator-item.selected {
+  border-color: #4a6fa5;
+  background-color: rgba(74, 111, 165, 0.05);
+}
+
+.collaborator-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e1e8ed;
+  flex-shrink: 0;
+}
+
+.collaborator-item.selected .collaborator-avatar {
+  border-color: #4a6fa5;
+}
+
+.collaborator-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.collaborator-details h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d4356;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.collaborator-details p {
+  margin: 0;
+  color: #6b7c93;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Continue button in main content */
+.continue-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0 1rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid #e1e8ed;
+}
+
+.continue-button-container .continue-button {
+  padding: 1rem 2rem;
+  background-color: #4a6fa5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+}
+
+.continue-button-container .continue-button:hover:not(:disabled) {
+  background-color: #84c5d0;
+}
+
+.continue-button-container .continue-button:disabled {
+  background-color: #8da2b5;
+  cursor: not-allowed;
+}
+
+/* Soft Professional Sidebar */
+.select-collaborator-page-container .booking-summary-sidebar {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: fit-content;
+  box-shadow: 0 2px 8px rgba(74, 111, 165, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .select-collaborator-page-container .booking-summary-sidebar {
+    position: static;
+    margin-top: 2rem;
+  }
+}
+
+.select-collaborator-page-container .summary-header h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2d4356;
+  margin-bottom: 0.5rem;
+}
+
+.select-collaborator-page-container .summary-header p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #6b7c93;
+  line-height: 1.4;
+}
+
+.select-collaborator-page-container .summary-body {
+  padding: 1.5rem 0;
+  border-top: 1px solid #e1e8ed;
+  border-bottom: 1px solid #e1e8ed;
+  margin: 1.5rem 0;
+  flex-grow: 1;
+  min-height: 100px;
+}
+
+.select-collaborator-page-container .summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  border-radius: 8px;
+  margin: 0 -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.select-collaborator-page-container .summary-item:hover {
+  background-color: rgba(74, 111, 165, 0.05);
+}
+
+.select-collaborator-page-container .summary-item:not(:last-child) {
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.select-collaborator-page-container .summary-item span:first-child {
+  color: #6b7c93;
+}
+
+.select-collaborator-page-container .summary-item span:last-child {
+  font-weight: 500;
+  color: #2d4356;
+}
+
+.summary-item.collaborator-selected {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e1e8ed !important;
+  color: #2d4356;
+  font-weight: 500;
+  background-color: rgba(74, 111, 165, 0.05) !important;
+  border-radius: 8px;
+}
+
+.select-collaborator-page-container .summary-footer {
+  padding-top: 1rem;
+}
+
+.select-collaborator-page-container .total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d4356;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f8fafe;
+  border-radius: 8px;
+  border: 1px solid #e1e8ed;
+}
+
+.select-collaborator-page-container .summary-footer .continue-button {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: #4a6fa5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-collaborator-page-container .summary-footer .continue-button:hover:not(:disabled) {
+  background-color: #84c5d0;
+}
+
+.select-collaborator-page-container .summary-footer .continue-button:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* Loading and error states */
+.select-collaborator-page-container .loading-message,
+.select-collaborator-page-container .error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.select-collaborator-page-container .error-message {
+  color: #dc3545;
+}

@@ -1,0 +1,59 @@
+.admin-sidebar {
+  width: 280px;
+  background-color: #fdfdff;
+  border-right: 1px solid #e0e5ed;
+  padding: 2rem 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.sidebar-header {
+  margin-bottom: 2.5rem;
+  padding-left: 0.5rem;
+}
+
+.sidebar-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #002856;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: #4a5568; /* Professional Gray */
+  padding: 0.75rem 1.5rem; /* Reducir padding vertical */
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s, border-left 0.2s;
+  border-left: 4px solid transparent;
+  height: auto; /* Altura automática */
+}
+
+.sidebar-nav a:hover {
+  background-color: #f0f5ff; /* Light blue-gray */
+  color: #003466;
+}
+
+.sidebar-nav a.active {
+  background-color: #e0edff; /* Active blue background */
+  color: #003466; /* Primary dark blue */
+  font-weight: 600;
+  border-left: 4px solid #003466;
+}
+
+.sidebar-nav a .nav-icon {
+  font-size: 1.25rem;
+  width: 24px;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.sidebar-nav a.active .nav-icon {
+  color: #003466;
+}

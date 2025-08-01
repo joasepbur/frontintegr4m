@@ -1,0 +1,93 @@
+/* Variant Editor Modal Overlay */
+.variant-editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+/* Modal Container */
+.variant-editor-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+.variant-editor-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.variant-editor-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.variant-editor-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.variant-editor-body .form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.variant-editor-body .form-group {
+    flex: 1;
+}
+
+.variant-editor-footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    background-color: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Buttons */
+.btn-cancel-variant,
+.btn-save-variant {
+    padding: 0.65rem 1.25rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-cancel-variant {
+    background-color: #fff;
+    border-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-cancel-variant:hover {
+    background-color: #edf2f7;
+}
+
+.btn-save-variant {
+    background-color: #2d3748;
+    color: #fff;
+}
+
+.btn-save-variant:hover {
+    background-color: #1a202c;
+}

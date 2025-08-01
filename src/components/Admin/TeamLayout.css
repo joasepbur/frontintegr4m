@@ -1,0 +1,9 @@
+.team-layout {
+  display: flex;
+  width: 100%; /* Asegura que el layout ocupe todo el ancho */
+}
+
+.team-content {
+  flex-grow: 1;
+  padding: 2rem; /* Añade espacio interno al contenido */
+}

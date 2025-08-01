@@ -1,0 +1,199 @@
+/* Hero Section Layout */
+.hero {
+  display: flex;
+  gap: 2.5rem; /* Increased gap */
+  align-items: flex-start;
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.hero-main-content {
+  flex: 1; /* Allow main content to take up available space */
+  min-width: 0; /* Prevents flexbox overflow issues */
+}
+
+.hero-sidebar {
+  flex-basis: 380px; /* Fixed width for the sidebar */
+  flex-shrink: 0;
+  position: sticky;
+  top: 120px; /* Adjust based on header height */
+}
+
+/* Main Content Styling */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800; /* Bolder */
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(74, 111, 165, 0.12);
+}
+
+.hero-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Sidebar Cards Styling */
+.info-card,
+.mood-card {
+  background: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-card h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.info-card p {
+  font-size: 1rem;
+  margin: 0.75rem 0;
+  color: var(--secondary-color);
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.rating-score {
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.rating-stars {
+  color: #ffc107; /* Gold color for stars */
+}
+
+.rating-count {
+  color: var(--secondary-color);
+}
+
+.reserve-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  background: var(--primary-color);
+  color: var(--light-text-white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 1.25rem 0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.reserve-button:hover {
+  background: var(--accent-color);
+}
+
+.location-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+}
+
+.location-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.location-link:hover {
+  text-decoration: underline;
+}
+
+/* Mood Card Styling */
+.mood-card h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.mood-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.mood-options button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  transition: all 0.2s ease;
+}
+
+.mood-options button:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.mood-options button svg {
+  font-size: 2.2rem;
+  transition: color 0.2s ease;
+}
+
+.mood-options button:hover svg {
+  color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+  }
+}

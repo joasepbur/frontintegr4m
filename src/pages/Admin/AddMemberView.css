@@ -1,0 +1,202 @@
+@import url('./AdminPanel.css');
+
+.info-icon {
+  margin-left: 8px;
+  color: #8da2b5; /* Usamos un gris suave de la paleta */
+  vertical-align: middle;
+  cursor: help;
+  font-size: 1rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+}
+
+.edit-member-view {
+  display: flex;
+  flex-grow: 1;
+  background-color: var(--background-color);
+}
+
+.edit-member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.edit-member-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.header-actions .save-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.header-actions .save-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.header-actions .save-button:disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.edit-member-main-content {
+  flex-grow: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.side-nav {
+  width: 260px;
+  background-color: var(--surface-color);
+  padding: var(--spacing-md);
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.side-nav p {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.side-nav li a {
+  display: block;
+  padding: 0.75rem;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.side-nav li a:hover {
+  background-color: var(--hover-color);
+}
+
+.side-nav li.active a {
+  background-color: rgba(74, 111, 165, 0.1);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Card layout for sections */
+.profile-section,
+.work-info-section {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.profile-section h2, .work-info-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.profile-section p, .work-info-section p {
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  font-size: 1rem;
+}
+
+/* Alineación del avatar y los campos del perfil */
+.profile-main {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+}
+
+.profile-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--surface-color);
+  box-shadow: var(--shadow-light);
+}
+
+/* Contenedor de los campos del formulario con Grid */
+.profile-fields,
+.work-info-section .form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}

@@ -1,0 +1,85 @@
+.my-appointments-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.my-appointments-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.appointments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.appointment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.appointment-item:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.appointment-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.collaborator-name {
+  color: #555;
+  margin: 0.25rem 0;
+}
+
+.appointment-time {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+/* Colores según el estado */
+.status-reservado .status-badge {
+  background-color: #28a745; /* Verde */
+}
+
+.status-cancelado .status-badge {
+  background-color: #dc3545; /* Rojo */
+}
+
+.status-completado .status-badge {
+  background-color: #007bff; /* Azul */
+}
+
+.loading-container, .error-container {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: #555;
+}

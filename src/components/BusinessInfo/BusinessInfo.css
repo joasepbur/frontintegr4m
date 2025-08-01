@@ -1,0 +1,108 @@
+/* Business Info Section Styles */
+.business-info-section {
+  padding: 4rem 2rem;
+  background-color: var(--background-color);
+}
+
+.business-info-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+  background-color: var(--section-bg);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+}
+
+.info-content {
+  padding-right: 2rem;
+}
+
+.info-subtitle {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  max-width: 450px;
+}
+
+.info-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.info-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--surface-color);
+}
+
+.status-badge.open {
+  background-color: var(--success-color);
+}
+
+.status-badge.closed {
+  background-color: var(--danger-color);
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Opening Hours Card */
+.hours-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--secondary-text);
+  transition: color 0.2s ease;
+}
+
+.hours-dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted var(--border-color);
+  margin: 0 0.8rem;
+  transform: translateY(-4px);
+}
+
+.hours-item:last-child {
+  border-bottom: none;
+}
+
+.hours-item.today,
+.hours-item.today strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.hours-item strong {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.map-container {
+  width: 100%;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}

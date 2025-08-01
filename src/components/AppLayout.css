@@ -1,0 +1,9 @@
+.app-layout {
+  display: flex;
+}
+
+.app-content {
+  margin-left: 80px; /* Width of IconSidebar */
+  width: calc(100% - 80px);
+  min-height: 100vh;
+}
